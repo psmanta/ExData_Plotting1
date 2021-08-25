@@ -1,4 +1,4 @@
-# plot1.R
+# plot2.R
 
 #Read data and subset for only Feb 1 & Feb 2, 2007
 setwd("C:/GitHub/GettingCleaningData/ProgrammingAssignment/ExData_Plotting1")
@@ -13,7 +13,12 @@ plotData$Time <- strptime(datetime, format = "%d/%m/%Y %H:%M:%S")
 rm(datetime)
 plotData$Date <- as.Date(plotData$Date, format = "%d/%m/%Y")
 
-# Now create the plot
-png(filename="plot1.png", width=480, height=480)
-hist(plotData$Global_active_power, main="Global Active Power", xlab="Global Active Power (Kilowatts)", col="Red")
+
+#Create the plot
+png(filename = "plot2.png", width=480, height=480)
+plot(plotData$Global_active_power, type="l", ylab="Global Active Power (kilowatts)", xlab="", axes="FALSE")
+box(which="plot", lty="solid")
+axis(1, at=c(0,1440,2880), labels=c("Thursday", "Friday", "Saturday"))
+axis(2)
+
 dev.off()
